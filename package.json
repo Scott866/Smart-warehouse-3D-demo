@@ -1,5 +1,5 @@
 {
-  "name": "smart-warehouse-3d-demo",
+  "name": "warehouse-3d-demo",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -9,17 +9,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "@react-three/drei": "^9.116.5",
+    "@react-three/fiber": "^8.17.10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "three": "^0.160.0",
-    "@react-three/fiber": "^8.15.16",
-    "@react-three/drei": "^9.105.6",
-    "leva": "^0.9.35"
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
-    "@types/react": "^18.3.7",
-    "@types/react-dom": "^18.3.0",
-    "vite": "^5.4.0",
-    "@vitejs/plugin-react": "^4.3.1"
+    "@vitejs/plugin-react": "^4.3.1",
+    "vite": "^5.3.3"
   }
 }
