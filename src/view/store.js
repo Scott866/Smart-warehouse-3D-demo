@@ -2,29 +2,17 @@ import { create } from 'zustand'
 
 const useStore = create((set, get) => ({
   playing: true,
-  step: false,
-  view: 'iso',
-  floor: 1,
-  language: 'zh',
-  throughput: 0,
-  palletsInStore: 0,
-  cartonsInStore: 0,
+  phase: 1, // 1 ASRS in, 2 Depalletize to conveyor, 3 Pick to tote -> MS
   events: [],
-  addEvent: (msg) => set(state => ({ events: [...state.events, { t: Date.now(), msg }] })),
+  palletsInASRS: 0,
+  cartonsOnConv: 0,
+  totesInMS: 0,
+  addEvent: (msg) => set(s => ({ events: [...s.events, { t: Date.now(), msg }] })),
   clearEvents: () => set({ events: [] }),
-  replayEvents: () => {
-    const es = get().events.slice(-50)
-    set({ events: [] })
-    es.forEach((e, i) => setTimeout(() => get().addEvent(e.msg), 300 + i * 150))
-  },
-  togglePlay: () => set(state => ({ playing: !state.playing })),
-  stepOnce: () => set({ step: true }),
-  setView: (v) => set({ view: v }),
-  setFloor: (f) => set({ floor: f }),
-  setLanguage: (l) => set({ language: l }),
-  incThroughput: (v) => set(state => ({ throughput: Math.max(0, state.throughput * 0.9 + v) })),
-  incPallets: (v) => set(state => ({ palletsInStore: Math.max(0, state.palletsInStore + v) })),
-  incCartons: (v) => set(state => ({ cartonsInStore: Math.max(0, state.cartonsInStore + v) })),
+  setPhase: (p) => set({ phase: p }),
+  togglePlay: () => set(s => ({ playing: !s.playing })),
+  reset: () => set({ phase: 1, palletsInASRS: 0, cartonsOnConv: 0, totesInMS: 0, events: [] }),
+  inc: (key, v=1) => set(s => ({ [key]: Math.max(0, (s[key]||0) + v) })),
 }))
 
 export default useStore
