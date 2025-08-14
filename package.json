@@ -1,7 +1,7 @@
 {
-  "name": "warehouse-1f-demo",
-  "private": true,
+  "name": "warehouse-full-demo",
   "version": "0.1.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,15 +9,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@react-three/drei": "^9.116.5",
-    "@react-three/fiber": "^8.17.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "three": "^0.160.0",
+    "@react-three/fiber": "^8.17.10",
+    "@react-three/drei": "^9.116.5",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.1",
-    "vite": "^5.3.3"
+    "vite": "^5.3.3",
+    "@vitejs/plugin-react": "^4.3.1"
   }
 }
